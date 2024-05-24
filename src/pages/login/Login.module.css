@@ -1,0 +1,75 @@
+.Page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #297377; */
+}
+
+.Window {
+  display: flex;
+}
+
+.TabNav {
+  background: white;
+  margin-right: 10px;
+}
+
+.Tab {
+  padding: 20px 40px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.TabActive {
+  background: #00ad45;
+}
+
+.TabLabel {}
+
+.TabLogo {
+  margin-bottom: 7.8px;
+}
+
+.Frame {
+  padding: 32px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {}
+
+.Input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 15px;
+  border: 1px solid #eee;
+  background: #eee;
+}
+
+.Comment {
+  margin-bottom: 1em;
+}
+
+.Warning {}
+
+.Error {}
+
+.BigButton {
+  cursor: pointer;
+  padding: 14px 30px;
+  background: #00ad45;
+  width: auto;
+  font-size: 15px;
+  display: block;
+}
+
+.BigButton:hover {
+  opacity: .8;
+  transition: 0.5s all;
+}
+
+.Link {
+  margin-top: 40px;
+}
