@@ -1,0 +1,16 @@
+.Page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Window {
+  display: flex;
+}
+
+.Frame {
+  padding: 32px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}

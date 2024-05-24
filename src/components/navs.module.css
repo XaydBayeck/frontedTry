@@ -1,0 +1,19 @@
+.Tab {
+  padding: 20px 40px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.TabActive {
+  background: #00ad45;
+  color: white;
+}
+
+.TabNav {
+  background: white;
+  margin-right: 10px;
+}
+
+.TabLogo {
+  margin-bottom: 7.8px;
+}

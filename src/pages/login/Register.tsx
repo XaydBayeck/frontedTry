@@ -3,6 +3,7 @@ import { AiOutlineMail } from 'solid-icons/ai'
 import { IoKeyOutline } from 'solid-icons/io'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'solid-icons/ai'
 import { createSignal } from 'solid-js'
+import UserInput from './UserInput'
 
 export default function() {
   const [visibale0, setVisibale0] = createSignal(false);
@@ -10,12 +11,7 @@ export default function() {
 
   return (
     <div class={styles.Frame}>
-      <div class={styles.Input}>
-        <AiOutlineMail style={{
-          "margin-right": `10px`,
-        }} />
-        <input type='email' placeholder='邮箱' name='email' />
-      </div>
+      <UserInput />
       <div class={styles.Comment}>
       </div>
       <div class={styles.Input}>
