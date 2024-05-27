@@ -1,54 +1,43 @@
-import { Match, Switch, createSignal } from 'solid-js'
-import styles from './Login.module.css'
+import { Switch } from 'solid-js'
 import Login from './Login'
 import { FaRegularUser } from 'solid-icons/fa'
 import { BiSolidEdit } from 'solid-icons/bi';
 import { AiOutlineLock } from 'solid-icons/ai'
 import Register from './Register';
 import ForgotPassword from './ForgotPassword';
-import navs from '../../components/navs';
-import { IconTypes } from 'solid-icons';
+import { Frame, Page } from '../../components/page';
+import { Tab, TabIcon, Tabs } from '../../components/tabs';
 
-type LoginNavKind = "login" | "regist" | "find password"
-const { NavSide } = navs<LoginNavKind>()
-
-export default function() {
-  const [nav, setNav] = createSignal<LoginNavKind>("login")
-
-  const items: {label:LoginNavKind, icon: IconTypes, content: string}[] = [
-    {
-      label: "login",
-      icon: FaRegularUser,
-      content: "登陆",
-    },
-    {
-      label: "regist",
-      icon: BiSolidEdit,
-      content: "登陆",
-    },
-    {
-      label: "find password",
-      icon: AiOutlineLock,
-      content: "登陆",
-    },
-  ]
-
-  return (
-    <div class={styles.Page}>
-      <div class={styles.Window}>
-        <NavSide label={[nav, setNav]} items={items} />
-        <Switch>
-          <Match when={nav() == "login"}>
-            <Login />
-          </Match>
-          <Match when={nav() == "regist"}>
-            <Register />
-          </Match>
-          <Match when={nav() == "find password"}>
-            <ForgotPassword />
-          </Match>
-        </Switch>
-      </div>
-    </div>
-  )
+enum TabKind {
+  Login, Regist, FindPassword
 }
+
+export default () => (
+    <Page default={TabKind.Login}>
+      <Tabs>
+        <Tab label={TabKind.Login}>
+          <TabIcon icon={FaRegularUser} />
+          登陆
+        </Tab>
+        <Tab label={TabKind.Regist}>
+          <TabIcon icon={BiSolidEdit} />
+          注册
+        </Tab>
+        <Tab label={TabKind.FindPassword}>
+          <TabIcon icon={AiOutlineLock} />
+          找回密码
+        </Tab>
+      </Tabs>
+      <Switch>
+        <Frame label={TabKind.Login}>
+          <Login />
+        </Frame>
+        <Frame label={TabKind.Regist}>
+          <Register />
+        </Frame>
+        <Frame label={TabKind.FindPassword}>
+          <ForgotPassword />
+        </Frame>
+      </Switch>
+    </Page>
+  )

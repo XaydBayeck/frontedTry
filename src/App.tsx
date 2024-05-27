@@ -8,7 +8,7 @@ const App: Component = () => {
   return (
     <div class={styles.App}>
       <header class={styles.header}> </header>
-      <User/>
+      <User />
     </div>
   );
 };

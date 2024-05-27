@@ -1,10 +1,9 @@
-import { Match, Switch, createSignal } from 'solid-js'
-import navs from '../../../components/navs'
-import styles from './User.module.css'
-import { IconTypes } from 'solid-icons'
+import { Switch } from 'solid-js'
 import { FaRegularUser } from 'solid-icons/fa'
 import { BsCalendar3, BsCameraReels, BsCart } from 'solid-icons/bs'
 import Basic from './Basic'
+import { Frame, Page } from '../../../components/page'
+import { Tab, TabIcon, Tabs } from '../../../components/tabs'
 
 enum UserPages {
   Basic,
@@ -13,53 +12,39 @@ enum UserPages {
   Agend,
 }
 
-const { NavSide } = navs<UserPages>()
-
-export default function() {
-  const [nav, setNav] = createSignal<UserPages>(UserPages.Basic)
-
-  const items: {label:UserPages, icon:IconTypes, content: string}[] = [
-    {
-      label: UserPages.Basic,
-      icon: FaRegularUser,
-      content: '基础信息'
-    },
-    {
-      label: UserPages.Activities,
-      icon: BsCameraReels,
-      content: '活动管理'
-    },
-    {
-      label: UserPages.Resources,
-      icon: BsCart,
-      content: '资源申视'
-    },
-    {
-      label: UserPages.Agend,
-      icon: BsCalendar3,
-      content: '日程查看'
-    },
-  ]
-
-  return (
-    <div class={styles.Page}>
-      <div class={styles.Window}>
-        <NavSide label={[nav, setNav]} items={items} />
-        <Switch>
-          <Match when={nav() == UserPages.Basic}>
-            <Basic />
-          </Match>
-          <Match when={nav() == UserPages.Activities}>
-            <Basic />
-          </Match>
-          <Match when={nav() == UserPages.Resources}>
-            <Basic />
-          </Match>
-          <Match when={nav() == UserPages.Agend}>
-            <Basic />
-          </Match>
-        </Switch>
-      </div>
-    </div>
+export default () => (
+    <Page default={UserPages.Basic}>
+      <Tabs>
+        <Tab label={UserPages.Basic}>
+          <TabIcon icon={FaRegularUser} />
+          基础信息
+        </Tab>
+        <Tab label={UserPages.Activities}>
+          <TabIcon icon={BsCameraReels} />
+          活动管理
+        </Tab>
+        <Tab label={UserPages.Resources}>
+          <TabIcon icon={BsCart} />
+          资源申视
+        </Tab>
+        <Tab label={UserPages.Agend}>
+          <TabIcon icon={BsCalendar3} />
+          日程查询
+        </Tab>
+      </Tabs>
+      <Switch>
+        <Frame label={UserPages.Basic}>
+          <Basic />
+        </Frame>
+        <Frame label={UserPages.Activities}>
+          <Basic />
+        </Frame>
+        <Frame label={UserPages.Resources}>
+          <Basic />
+        </Frame>
+        <Frame label={UserPages.Agend}>
+          <Basic />
+        </Frame>
+      </Switch>
+    </Page>
   )
-}

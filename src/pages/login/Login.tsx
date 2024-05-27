@@ -7,7 +7,7 @@ import UserInput from './UserInput'
 export default function() {
   const [visibale, setVisibale] = createSignal(false);
   return (
-      <div class={styles.Frame}>
+      <>
 	      <UserInput />
         <div class={styles.Comment}>
         </div>
@@ -29,6 +29,6 @@ export default function() {
         <a class={styles.Link}>
           忘记密码？
         </a>
-      </div>
+      </>
   )
 }
